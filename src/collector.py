@@ -9,7 +9,7 @@ chl = sys.argv[1]
 title=sys.argv[2]
 vid = sys.argv[3]
 #client = MongoClient()
-client = MongoClient("mongodb+srv://appadm:e7Eddf7fe7Eddf7f@cluster0.g7t88xt.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("")
 mydatabase = client['YouTubeChat']
 collection = mydatabase[chl]
 
