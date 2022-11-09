@@ -1,16 +1,27 @@
 
 import sys
+import configparser
+
 #sys.path.insert(0, '/home/gz/project/nida/ychat/youtube-chat-analytics/src/include/')
 sys.path.insert(0, 'src/include/')
 
 from ychat_db  import ychatdb
+from config import ychat_config as yconf
+ 
+yc = yconf("config.conf")
+y = yc.getconfig()
+aa = y['Test01']
+#print(aa['host'])
+#print(aa['database'])
 
-la = {"host":"mongodb+srv://appadm:e7Eddf7fe7Eddf7f@cluster0.g7t88xt.mongodb.net/?retryWrites=true&w=majority",
-        "database":"YouTubeChat"}
-client = ychatdb(la)
+
+
+dbconf={"host":aa['host'],"database":aa['database']}
+print(dbconf)
+client = ychatdb(dbconf)
 #client.getCollection("YouTubeChat")
 
-ret = client.getDocument("A00011")
+ret = client.getGroupVid("A00011")
 cc = 0
 for i in ret:
     if (cc > 9):

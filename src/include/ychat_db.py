@@ -23,6 +23,18 @@ class ychatdb:
         col = self.db[collection]
         return (col.find({}))
 
+    def getGroupName(self,collection):
+        collec = self.db[collection]
+        i = collec.aggregate([{ '$group': {'_id': '$aname','Sum':{'$sum':1}}},{"$sort": {"Sum":-1}}])
+
+        return(i)
+    
+    def getGroupVid(self,collection):
+        collec = self.db[collection]
+        i = collec.aggregate([{ '$group': {'_id': '$vid','Sum':{'$sum':1}}}])
+
+        return(i)
+
 
         
 
