@@ -28,13 +28,14 @@ class ychatdb:
     
     def addNewChannel(self,code,name):
         info=self.db['info']
-        #print(f"Check {code}")
+        print(f"Check {code}")
         ret = info.find({'chl_code':code})
 
         cc=0
         alist = []
         for i in ret:
             alist.append(i)
+            
             cc += 1
         
         if alist !=[]:
@@ -59,9 +60,14 @@ class ychatdb:
             record={"datetime":i['datetime'],"vid":i['vid'],"aname":i['aname'],"msg":i['msg']}
             l.append(record)
             cc += 1
+            #if cc >=ssize:
+            #    print("AA")
+            #    print(l)
+            #    col.insert_many(l)
+            #    break
         
         col.insert_many(l)
-
+        
         data = l[0]
         record={"code":code,"vid":data['vid'],"org_name_th":name,"org_name_en":"","title_th":program,"title_en":""}
         colch.insert_one(record)
@@ -146,17 +152,30 @@ class ychatdb:
         #print(re)
         return(re)
 
+    def getCodeByTitleTh(self,name):
+        collec = self.db['info']
+        colch = self.db['cliplist']
+        re = collec.find({"title_th":name})
+        record = re[0]
+        #print(record['chl_code'])
+        #re = colch.find({"code":record['chl_code']})
+        re=record['chl_code']
+        #for i in re:
+        #    print(i)
+        #print(re)
+        return(re)
+
     def getChByTitleTh(self,chname,ep):
         collec = self.db['info']
         colch = self.db['cliplist']
 
         re = colch.find({"org_name_th":chname,'title_th':ep[0]})
         r =re[0]
-
+        #for i in re:
+        #    print(i)
         col = self.db[r['code']]
         chdata = col.find({"vid":r['vid']})
         return(chdata)
-
     def getCodeByCh(self,chname):
         collec = self.db['info']
         #colch = self.db['cliplist']
@@ -174,6 +193,27 @@ class ychatdb:
         re = colch.find({"org_name_th":chname,'title_th':curr_progm})
         ri = re[0]
         colch.update_one({'_id':ri['_id']}, {"$set": {"title_th":new_progm }})
+    
+    def deleteProgram(self,chname,curr_progm):
+        collec = self.db['info']
+        colch = self.db['cliplist']
+
+
+        re = colch.find({"org_name_th":chname,'title_th':curr_progm})
+        prgm = re[0]
+        print(prgm)
+        vid=prgm['vid']
+        code=prgm['code']
+        cc= self.db[code]
+        #print({"code":code,"vid":vid})
+        ret = cc.find({"vid":vid})
+        ret=cc.remove({"vid":vid})
+        #print(ret)
+
+        ret = colch.remove({"vid":vid})
+        #print(ret)
+        
+
 
 
 

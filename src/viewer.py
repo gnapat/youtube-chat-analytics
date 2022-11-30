@@ -105,7 +105,7 @@ def make_window(theme=None):
                 [sg.T('Program', font='Norasi 12', justification='l', expand_x=True)],
                 [sg.Listbox([], no_scrollbar=True,  s=(50,15),k='-EP_LIST-')],
                 [sg.T('Program Manager', font='Norasi 12', justification='l', expand_x=True)],
-                [sg.Button('Get Program'),sg.Button('Rename')],
+                [sg.Button('Get Program'),sg.Button('Rename Program'),sg.Button('Delete Program')],
                 [sg.Input(k='-Program-',s=50)], 
                 [sg.T('Channel Manager', font='Norasi 12', justification='l', expand_x=True)],
                 [sg.Button('Add New Channel'),sg.Button('Remove Channel')],
@@ -115,7 +115,7 @@ def make_window(theme=None):
                 [name('Clone to:'),sg.Combo(dblist, default_value=dblist[0], s=(25,30), enable_events=False, readonly=True, k='-CLONEDBCOMBO-'),sg.Button('Submit Clone')] ]
     layout_c=[[sg.Button('Apply')], [sg.Button('Clean')]]
 
-
+    #layout_r = [[sg.T('Display', font='Norasi 12', justification='c', expand_x=True)] ,[sg.Canvas(key='-PLOT01-')]]
     layout_r = [[sg.Canvas(key='-PLOT01-')]]
     
     layout_main=[[sg.Col(layout_l),sg.Col(layout_c), sg.Col(layout_r)]]
@@ -187,13 +187,18 @@ def UpdateValueOnDisplay(client,window):
 
         re = client.getChCodeByTitleTh(al[0])
         eplist=[]
-        for j in re:
-            eplist.append(j['title_th'])
+        for irec in re:
+            eplist.append(irec['title_th'])
         
         #if eplist != []:
         window['-EP_LIST-'].update(values=eplist,set_to_index=0)
         window['-Program-'].update(value="")
-
+        try:
+            chcode="code: %s" %(client.getCodeByTitleTh(al[0]))
+            window['-CHCODE-'].update(value=chcode)
+        except Exception as e:
+            pass
+        
 
 
 
@@ -219,7 +224,7 @@ def main():
         elif event == "Connect":
             dbl = App.getDblist()
             dbc = dbl[values['-DBCOMBO-']]
-            print(dbc)
+            #print(dbc)
             
 
             try:
@@ -235,6 +240,22 @@ def main():
             client = ychatdb(dbconf)
 
             UpdateValueOnDisplay(client,window)
+
+            ''''
+            al=[]
+            at = client.getChList()
+            for  i in at:
+                al.append(i['title_th'])
+
+            window['-CHCOMBO-'].update(values=al, value='',set_to_index=0)
+
+            re = client.getChCodeByTitleTh(al[0])
+            eplist=[]
+            for i in re:
+                eplist.append(i['title_th'])
+
+            window['-EP_LIST-'].update(values=eplist,set_to_index=0)
+            '''
 
         elif event == "Disconnect":
             print("Disconnect")
@@ -263,11 +284,19 @@ def main():
                 eplist.append(i['title_th'])
 
             window['-EP_LIST-'].update(values=eplist,set_to_index=0)
+            try:
+                #chcode="code: %s" %(i['code'])
+                chcode="code: %s" %(client.getCodeByTitleTh(values['-CHCOMBO-']))
+                print(chcode)
+                window['-CHCODE-'].update(value=chcode)
+            except Exception as e:
+                pass
+            
 
+            #window['-Rename-'].update(value=values['-EP_LIST-'])
         elif event == "-EP_LIST-":
             print("-------------")
-
-        elif event == "Rename":
+        elif event == "Rename Program":
             new_progm = values['-Program-']
             curr_progm = values['-EP_LIST-'][0]
             ch = values['-CHCOMBO-']
@@ -279,17 +308,27 @@ def main():
                 MessageBoxError("Rename","Please enter new program name.")
             
             #print(f"{values['-Program-']}")
+        elif event == "Delete Program":
+            curr_progm = values['-EP_LIST-'][0]
+            ch = values['-CHCOMBO-']
+            client.deleteProgram(ch,curr_progm)
+            UpdateValueOnDisplay(client,window)
+            strbuff = f"Delete {curr_progm}, done"
+            MessageBoxInfo("Delete Program",strbuff)
+            #print(curr_progm)
 
         elif event == "Get Program":
             window['-Program-'].update(value=values['-EP_LIST-'][0])
-
+            
         elif event == "Add New Channel":
-
+            #[name('Channel Code'),sg.Input(k='-AddChCode-',s=20)],
+            #[name('Channel Name'),sg.Input(k='-AddChName-',s=35)] ]
             chcode = values['-AddChCode-']
             chname = values['-AddChName-']
-
+            #print(f"- {chcode}={len(chcode)} {chname}={len(chname)} -")
 
             if (len(chcode)>0) and (len(chname)):
+                print("OK-----------")
                 
                 ret = client.addNewChannel(chcode,chname)
                 if ret <0:
@@ -330,6 +369,7 @@ def main():
             if db_des == db_cur:
                 MessageBoxInfo("Submit Clone","Can't clone to same database.")
             else:
+                print("Go.")
                 dbl = App.getDblist()
                 dbc = dbl[values['-CLONEDBCOMBO-']]
                 dbc_dest={"host":dbc['host'],"database":dbc['database']}
@@ -343,19 +383,13 @@ def main():
                 client_dest.putMsg(chcode_curr,ch,progm,retAllMsg)
 
                 MessageBoxInfo("Submit Clone","Success")
-
+                #print(chcode_curr)
+                #ret = client_dest.addNewChannel(chcode_curr,ch)
+                #if ret >0:
+                #    print("Add new")
                 
-                
-                
-
-
-
-            
-
-
-
         
-    print("Bye..")
+    print("Hello World!")
 
 if __name__ == "__main__":
     main()
