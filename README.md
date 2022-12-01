@@ -44,6 +44,13 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 7. Install PySimpleGUI lib -> pip install PySimpleGUI
 8. Run python.exe .\src\viewer.py
 
+## Feature
+This application is developed in python language. So can understand the source code and can be easily tested.
+
+Applications will be on
+Graphice User interface (GUI) powered by PySimpleGUI Library.
+
+Data storage and data manipulation using Create , Read ,Update, Delete (CRUD Oparation) uses MongoDB as the core.
 
 
 
