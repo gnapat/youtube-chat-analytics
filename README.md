@@ -28,8 +28,8 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ### **Source code**
 src
   - include
-    - ychat_db.py
-  - viewer.py
+    - ychat_db.py [data management]
+  - viewer.py [GUI]
   
 ### **Step Installation and Run**
 
