@@ -19,9 +19,8 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ![image](https://user-images.githubusercontent.com/22583786/204783912-8f6e7912-d57b-4788-8a6c-680721f9f45e.png)
 
 
-### **Installation and run**
-#### Need install Anaconda3.
-
+### **Step Installation and Run**
+#### *Need install Anaconda3.
 1. Python.exe –m venv \youtube-chat-analytics\
 2. cd \youtube-chat-analytics\ 
 3. Script\activate
