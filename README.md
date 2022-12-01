@@ -24,7 +24,8 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 - matplotlib
 - pymongo
 - PySimpleGUI
-#### *Need install Anaconda3.
+- Need install Anaconda3
+
 ### **Source code**
 - src
   - viewer.py [GUI]
