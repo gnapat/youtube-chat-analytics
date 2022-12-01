@@ -19,12 +19,8 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ![image](https://user-images.githubusercontent.com/22583786/204783912-8f6e7912-d57b-4788-8a6c-680721f9f45e.png)
 
 ## Feature
-This application is developed in python language. So can understand the source code and can be easily tested.
-
-Applications will be on
-Graphice User interface (GUI) powered by PySimpleGUI Library.
-
-Data storage and data manipulation using **Create , Read ,Update, Delete (CRUD Oparation)** uses MongoDB as the core.
+This application is developed in python language. So can understand the source code and can be easily tested. Applications will be on
+Graphice User interface (GUI) powered by PySimpleGUI Library. Data storage and data manipulation using **Create , Read ,Update, Delete (CRUD Oparation)** uses MongoDB as the core.
 
 ### Required libraries
 - Pandas
