@@ -24,9 +24,10 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 - matplotlib
 - pymongo
 - PySimpleGUI
+#### *Need install Anaconda3.
 
 ### **Step Installation and Run**
-#### *Need install Anaconda3.
+
 1. Python.exe –m venv \youtube-chat-analytics\
 2. cd \youtube-chat-analytics\ 
 3. Script\activate
