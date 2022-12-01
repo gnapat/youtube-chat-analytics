@@ -1,4 +1,4 @@
-# Youtube-chat-analytics DADS5001 Quiz1: Nosql data management
+# Youtube-chat-analytics (DADS5001 Quiz1: Nosql data management)
 The handling of data collection from social networks in different platforms is different. But good storage and categorization makes it easy to analyze data.
 For a small project, it is an experiment to make a system to help manage data from YouTube chat, starting with data collecting, hot and cold storage, and preparing Datamart for data analytics.
 - Data Collector.
