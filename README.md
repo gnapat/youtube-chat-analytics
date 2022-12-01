@@ -12,6 +12,9 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ### Data Diagram
 ![image](https://user-images.githubusercontent.com/22583786/204730797-16e7b65a-1cc0-44cd-a386-5038715179ad.png)
 
+![image](https://user-images.githubusercontent.com/22583786/204941129-5de7e8de-80c5-4a95-949e-a95dc6b56439.png)
+
+
 
 ## GUI/Web base (Virtualization/Viewer).
 
