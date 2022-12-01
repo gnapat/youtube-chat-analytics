@@ -26,7 +26,7 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 - PySimpleGUI
 #### *Need install Anaconda3.
 ### **Source code**
--src
+- src
  - viewer.py [GUI]
  - include
    - ychat_db.py [data management]
