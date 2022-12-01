@@ -24,7 +24,7 @@ This application is developed in python language. So can understand the source c
 Applications will be on
 Graphice User interface (GUI) powered by PySimpleGUI Library.
 
-Data storage and data manipulation using Create , Read ,Update, Delete (CRUD Oparation) uses MongoDB as the core.
+Data storage and data manipulation using **Create , Read ,Update, Delete (CRUD Oparation)** uses MongoDB as the core.
 
 ### Required libraries
 - Pandas
