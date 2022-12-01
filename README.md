@@ -19,3 +19,19 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ![image](https://user-images.githubusercontent.com/22583786/204783912-8f6e7912-d57b-4788-8a6c-680721f9f45e.png)
 
 
+### **Installation and run**
+#### Need install Anaconda3.
+
+1. Python.exe –m venv \youtube-chat-analytics\
+2. cd \youtube-chat-analytics\ 
+3. Script\activate
+4. Install pandas lib   -> pip install pandas
+5. Install matplotlib   -> pip install matplotlib
+6. Install pymongo lib -> pip install pymongo
+7. Install PySimpleGUI lib -> pip install PySimpleGUI
+8. Run python.exe .\src\viewer.py
+
+
+
+
+
