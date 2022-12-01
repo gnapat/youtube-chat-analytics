@@ -27,9 +27,9 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 #### *Need install Anaconda3.
 ### **Source code**
 - src
- - viewer.py [GUI]
- - include
-   - ychat_db.py [data management]
+  - viewer.py [GUI]
+  - include
+    - ychat_db.py [data management]
 
   
 ### **Step Installation and Run**
