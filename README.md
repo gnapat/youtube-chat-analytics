@@ -18,6 +18,12 @@ Youtube link:https://youtu.be/Iv5k3dV1WTI
 ### YouTube Live Chat Viewer
 ![image](https://user-images.githubusercontent.com/22583786/204783912-8f6e7912-d57b-4788-8a6c-680721f9f45e.png)
 
+### Required libraries
+- Pandas
+- numpy
+- matplotlib
+- pymongo
+- PySimpleGUI
 
 ### **Step Installation and Run**
 #### *Need install Anaconda3.
